@@ -343,6 +343,14 @@ namespace GradeBookTests
                 {
                     Grades = new List<double>{ 100 }
                 },
+                                 new Student("jamie1",StudentType.Standard,EnrollmentType.Campus)
+                {
+                    Grades = new List<double>{ 96 }
+                },
+                                new Student("john1",StudentType.Standard,EnrollmentType.Campus)
+                {
+                    Grades = new List<double>{ 85 }
+                },
                 new Student("john",StudentType.Standard,EnrollmentType.Campus)
                 {
                     Grades = new List<double>{ 75 }
@@ -351,14 +359,30 @@ namespace GradeBookTests
                 {
                     Grades = new List<double>{ 50 }
                 },
+                                new Student("jackie1",StudentType.Standard,EnrollmentType.Campus)
+                {
+                    Grades = new List<double>{ 40 }
+                },
+                                new Student("tom1",StudentType.Standard,EnrollmentType.Campus)
+                {
+                    Grades = new List<double>{ 35 }
+                },
                 new Student("tom",StudentType.Standard,EnrollmentType.Campus)
                 {
                     Grades = new List<double>{ 25 }
+                },
+                                new Student("tony1",StudentType.Standard,EnrollmentType.Campus)
+                {
+                    Grades = new List<double>{ 10 }
                 },
                 new Student("tony",StudentType.Standard,EnrollmentType.Campus)
                 {
                     Grades = new List<double>{ 0 }
                 }
+
+
+
+
             };
 
             gradeBook.GetType().GetProperty("Students").SetValue(gradeBook, students);

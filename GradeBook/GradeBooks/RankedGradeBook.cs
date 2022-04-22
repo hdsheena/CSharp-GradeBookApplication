@@ -37,7 +37,7 @@ namespace GradeBook.GradeBooks
         //get all average grades
         public List<double> AllAverageGrades()
         {
-            List<double> AllAverageGradesSorted = new();
+            List<double> AllAverageGradesSorted = new List<double>();
             foreach (var student in Students)
             {
                 AllAverageGradesSorted.Add(student.AverageGrade);
@@ -49,6 +49,7 @@ namespace GradeBook.GradeBooks
         public override char GetLetterGrade(double averageGrade)
         {
             List<double> AllAverageGradesSorted = AllAverageGrades();
+            int listPosition = 0;
             //how many students are there 100
             //what's this student's rank among those students 34
             //what ranks get what grades 0-20 = F, 21-40 = D, 41-60 = C, 61-80 = B, 81-100 = A
@@ -61,21 +62,34 @@ namespace GradeBook.GradeBooks
             for (var i = 0; i < AllAverageGradesSorted.Count; i++)
             {
                 double grade = AllAverageGradesSorted[i];
-           
-                Console.WriteLine("Grade", grade);
-                Console.WriteLine("Index", i);
-            }
 
-            if (averageGrade >= 90)
-                return 'A1';
-            else if (averageGrade >= 80)
+                Console.WriteLine("Grade");
+                    Console.WriteLine(grade);
+                Console.WriteLine("Index");
+                Console.WriteLine(i);
+                if (averageGrade > grade)
+                {
+                    Console.WriteLine("Grade is larger, keep checking");
+                }
+                else
+                {
+                    Console.WriteLine("Return this index as where the grade is in the list");
+                    listPosition = i;
+                    break;
+                }
+            }
+            if (listPosition >= Students.Count - fifthOfStudents)
+            {
+                return 'A';
+            }
+            else if (listPosition >= Students.Count - (2*fifthOfStudents))
                 return 'B';
-            else if (averageGrade >= 70)
+            else if (listPosition >= Students.Count - (3 * fifthOfStudents))
                 return 'C';
-            else if (averageGrade >= 60)
+            else if (listPosition >= Students.Count - (4 * fifthOfStudents))
                 return 'D';
             else
-                return 'F2';
+                return 'F';
         }
     }
 }

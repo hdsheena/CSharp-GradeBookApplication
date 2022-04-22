@@ -217,6 +217,7 @@ namespace GradeBook.GradeBooks
             else if (averageGrade >= 60)
                 return 'D';
             else
+                Console.WriteLine("Why is thisi running???");
                 return 'F';
         }
 
