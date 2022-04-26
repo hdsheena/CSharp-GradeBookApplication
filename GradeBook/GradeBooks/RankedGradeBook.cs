@@ -6,7 +6,7 @@ namespace GradeBook.GradeBooks
     public class RankedGradeBook : BaseGradeBook
     {
 
-        public RankedGradeBook(string name): base(name)
+        public RankedGradeBook(string name) : base(name)
         {
             Name = name;
             Type = Enums.GradeBookType.Ranked;
@@ -54,7 +54,8 @@ namespace GradeBook.GradeBooks
             //what's this student's rank among those students 34
             //what ranks get what grades 0-20 = F, 21-40 = D, 41-60 = C, 61-80 = B, 81-100 = A
             //what's this student's grade D
-            if (Students.Count < 5) {
+            if (Students.Count < 5)
+            {
                 throw new InvalidOperationException("Ranked grading requires a minumum of 5 students");
             }
             double fifthOfStudents = Students.Count / 5;
@@ -64,7 +65,7 @@ namespace GradeBook.GradeBooks
                 double grade = AllAverageGradesSorted[i];
 
                 Console.WriteLine("Grade");
-                    Console.WriteLine(grade);
+                Console.WriteLine(grade);
                 Console.WriteLine("Index");
                 Console.WriteLine(i);
                 if (averageGrade > grade)
@@ -82,7 +83,7 @@ namespace GradeBook.GradeBooks
             {
                 return 'A';
             }
-            else if (listPosition >= Students.Count - (2*fifthOfStudents))
+            else if (listPosition >= Students.Count - (2 * fifthOfStudents))
                 return 'B';
             else if (listPosition >= Students.Count - (3 * fifthOfStudents))
                 return 'C';
@@ -99,6 +100,15 @@ namespace GradeBook.GradeBooks
                 return;
             }
             base.CalculateStatistics();
+        }
+        public override void CalculateStudentStatistics(string name)
+        {
+            if (Students.Count < 5)
+            {
+                Console.WriteLine("Ranked grading requires at least 5 students with grades in order to properly calculate a student's overall grade.");
+                return;
+            }
+            base.CalculateStudentStatistics(name);
         }
     }
 }
